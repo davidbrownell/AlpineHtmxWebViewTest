@@ -43,7 +43,9 @@ classifiers = [
 ]
 
 dependencies = [
-    # TODO
+    "dbrownell_Common",
+    "flask == 3.*",
+    "pywebview == 5.*",
     "typer ~= 0.9"
 ]
 

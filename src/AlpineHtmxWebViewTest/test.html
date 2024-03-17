@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+        <title>Alpine.js and HTMX Test</title>
+    </head>
+    <body>
+        <div
+            x-data="{ name: '' }"
+        >
+            <input
+                name=name
+                type=text
+                placeholder="Enter your name"
+                hx-trigger="keyup throttle:500ms"
+                hx-get="/on_change"
+                x-model=name
+            />
+
+            <h2
+                x-show="name"
+                x-text="`Hello, ${name}`"
+                x-transition:enter.opacity.duration.500ms
+            ></h2>
+
+            <!--
+            <button
+                hx-get="/load"
+                hx-trigger="click"
+                hx-swap="outerHTML"
+                x-bind:hx-vals="JSON.stringify({'name': name})"
+                x-show="name"
+            >
+                Click Me!
+            </button>
+            -->
+        </div>
+    </body>
+</html>
