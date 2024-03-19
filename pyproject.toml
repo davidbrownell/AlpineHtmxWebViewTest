@@ -43,6 +43,8 @@ classifiers = [
 ]
 
 dependencies = [
+    "bleach == 6.*",
+    "cryptography == 42.*",
     "dbrownell_Common",
     "flask == 3.*",
     "pywebview == 5.*",

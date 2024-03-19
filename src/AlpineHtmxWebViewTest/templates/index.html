@@ -15,8 +15,10 @@
                 name=name
                 type=text
                 placeholder="Enter your name"
-                hx-trigger="keyup throttle:500ms"
-                hx-get="/on_change"
+                hx-target="#response"
+                hx-trigger="keyup delay:250ms"
+                hx-get="on_change"
+                hx-vals='{"token": "{{ token }}"}'
                 x-model=name
             />
 
@@ -24,6 +26,11 @@
                 x-show="name"
                 x-text="`Hello, ${name}`"
                 x-transition:enter.opacity.duration.500ms
+            ></h2>
+
+            <h2
+                id="response"
+                x-show="name"
             ></h2>
 
             <!--
