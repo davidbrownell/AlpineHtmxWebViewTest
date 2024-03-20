@@ -7,7 +7,7 @@
 """This file serves as an example of how to create scripts that can be invoked from the command line once the package is installed."""
 
 import webview
-from Server import app  # Assuming app.py is your Flask application
+from AlpineHtmxWebViewTest.Server import app
 
 
 if __name__ == "__main__":

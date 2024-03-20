@@ -24,11 +24,13 @@ from flask import Flask, make_response, render_template, request
 
 app = Flask(__name__)
 
+# pylint: disable=invalid-name
+
 
 # ----------------------------------------------------------------------
 def verify_token(function):
     @wraps(function)
-    def wrapper(*args, **kwargs):
+    def Wrapper(*args, **kwargs):
         token = request.args.get("token", None)
         if token is None:
             data = json.loads(request.data)
@@ -36,10 +38,10 @@ def verify_token(function):
 
         if token == webview.token:
             return function(*args, **kwargs)
-        else:
-            raise Exception("Authentication error")
 
-    return wrapper
+        raise Exception("Authentication error")
+
+    return Wrapper
 
 
 # ----------------------------------------------------------------------
