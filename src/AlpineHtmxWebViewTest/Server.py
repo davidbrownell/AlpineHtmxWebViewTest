@@ -33,8 +33,7 @@ def verify_token(function):
     def Wrapper(*args, **kwargs):
         token = request.args.get("token", None)
         if token is None:
-            data = json.loads(request.data)
-            token = data.get("token")
+            token = json.loads(request.data).get("token", None)
 
         if token == webview.token:
             return function(*args, **kwargs)
@@ -46,7 +45,6 @@ def verify_token(function):
 
 # ----------------------------------------------------------------------
 @app.route("/")
-# @verify_token
 def index():
     return render_template("index.html", token=webview.token)
 
@@ -63,6 +61,6 @@ def on_change():
         if name.lower() == "dave":
             name = f"<span style='color:red;'>{name}</span>"
 
-        response = f"<p>Hello, {name}!</p>"
+        response = f"<p>Hello, {name}, from HTMX/Flask!</p>"
 
     return make_response(response)

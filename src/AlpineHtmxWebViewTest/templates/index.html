@@ -24,7 +24,7 @@
 
             <h2
                 x-show="name"
-                x-text="`Hello, ${name}`"
+                x-text="`Hello, ${name} from Alpine.js!`"
                 x-transition:enter.opacity.duration.500ms
             ></h2>
 
@@ -32,18 +32,6 @@
                 id="response"
                 x-show="name"
             ></h2>
-
-            <!--
-            <button
-                hx-get="/load"
-                hx-trigger="click"
-                hx-swap="outerHTML"
-                x-bind:hx-vals="JSON.stringify({'name': name})"
-                x-show="name"
-            >
-                Click Me!
-            </button>
-            -->
         </div>
     </body>
 </html>
