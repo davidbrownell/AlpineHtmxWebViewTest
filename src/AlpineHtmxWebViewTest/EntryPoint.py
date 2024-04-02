@@ -17,6 +17,7 @@ from dbrownell_Common.Streams.DoneManager import DoneManager, Flags as DoneManag
 from typer.core import TyperGroup
 
 from AlpineHtmxWebViewTest import __version__
+from AlpineHtmxWebViewTest.Api import Api
 from AlpineHtmxWebViewTest.Server import app as server
 
 
@@ -70,10 +71,14 @@ def EntryPoint(
     with DoneManager.CreateCommandLine(
         flags=DoneManagerFlags.Create(verbose=verbose, debug=debug),
     ) as dm:
-        webview.create_window("AlpineHtmxWebViewTest", server)
+        webview.create_window(
+            "AlpineHtmxWebViewTest",
+            server,  # type: ignore
+            js_api=Api(),
+        )
 
         webview.start(
-            # debug=True,
+            debug=debug,
             ssl=True,
         )
 
